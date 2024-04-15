@@ -57,8 +57,6 @@ public class CodeAudit extends AbstractEntity {
 	@Length(max = 255)
 	private String				link;
 
-	// TODO: Attribute "mark" which is the mode mark obtained from its records.
-
 	// Relationships  ------------------------------------------------------------
 
 	@NotNull

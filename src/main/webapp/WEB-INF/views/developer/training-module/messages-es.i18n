@@ -19,6 +19,7 @@ developer.trainingModule.form.label.updateMoment = Momento de Actualización (Op
 developer.trainingModule.form.label.link = Enlace (Opcional):
 developer.trainingModule.form.label.estimatedTotalTime = Tiempo Total Estimado:
 developer.trainingModule.form.label.published = Publicado:
+developer.training-module.form.label.project = Projecto:
 
 developer.trainingModule.form.placeholder.time = 0 - 100
 		

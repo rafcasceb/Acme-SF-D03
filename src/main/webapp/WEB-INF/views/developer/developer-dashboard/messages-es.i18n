@@ -1,0 +1,18 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+developer.developer-dashboard.form.title = Panel de desarrollador
+
+developer.dashboard.form.label.totalNumberTrainingModulesWithUpdateMoment= Número total de Módulos de Entrenamiento con momento de actualización
+developer.dashboard.form.label.totalNumberTrainingSessionsWithLink = Número total de Sesiones de Entrenamiento con enlace
+developer.dashboard.form.label.averageTimeTrainingModules = Tiempo promedio de los Módulos de Entrenamiento
+developer.dashboard.form.label.deviationTimeTrainingModules = Desviación del tiempo de los Módulos de Entrenamiento
+developer.dashboard.form.label.minimumTimeTrainingModules = Tiempo mínimo de los Módulos de Entrenamiento
+developer.dashboard.form.label.maximumTimeTrainingModules = Tiempo máximo de los Módulos de Entrenamiento

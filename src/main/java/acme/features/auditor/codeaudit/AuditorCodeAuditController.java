@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.auditor.codeaudit;
+package acme.features.auditor.codeAudit;
 
 import javax.annotation.PostConstruct;
 

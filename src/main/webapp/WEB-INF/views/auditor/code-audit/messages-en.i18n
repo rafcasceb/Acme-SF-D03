@@ -27,7 +27,8 @@ auditor.codeaudit.form.button.publish = Publish
 auditor.codeaudit.form.button.auditrecords = Audit records
 
 validation.codeaudit.code.duplicate = This code is taken. Please, try with another code
-validation.codeaudit.published = This code audit is published
+validation.codeaudit.published = You cannot delete nor modify a published code audit
 validation.codeaudit.auditrecord.zero-auditrecords = A code audit with zero audit records cannot be published
 validation.codeaudit.mode.empty = This code audit does not have any audit records.
 validation.codeaudit.mode.less-than-c = The mark must be at least a C to be published
+validation.codeaudit.publish.unpublished-audit-records = You cannot publish a code audit with unpublished audit records

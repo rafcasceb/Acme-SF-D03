@@ -2,6 +2,7 @@
 package acme.features.developer.trainingModule;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,11 +36,15 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void load() {
 		TrainingModule object;
 		Developer developer;
+		Date moment;
+
+		moment = MomentHelper.getCurrentMoment();
 
 		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new TrainingModule();
 		object.setPublished(false);
 		object.setDeveloper(developer);
+		object.setCreationMoment(moment);
 
 		super.getBuffer().addData(object);
 	}
@@ -54,7 +59,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "details", "difficultyLevel", "creationMoment", "updateMoment", "link", "estimatedTotalTime", "project");
+		super.bind(object, "code", "details", "difficultyLevel", "link", "estimatedTotalTime", "project");
 		object.setProject(project);
 	}
 
@@ -77,6 +82,11 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void perform(final TrainingModule object) {
 		assert object != null;
 
+		Date moment;
+
+		moment = MomentHelper.getCurrentMoment();
+		object.setCreationMoment(moment);
+
 		this.repository.save(object);
 	}
 
@@ -93,7 +103,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		projectChoices = SelectChoices.from(projects, "title", object.getProject());
 		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 
-		dataset = super.unbind(object, "code", "details", "difficultyLevel", "creationMoment", "updateMoment", "link", "estimatedTotalTime", "published");
+		dataset = super.unbind(object, "code", "details", "difficultyLevel", "link", "estimatedTotalTime", "published");
 		dataset.put("project", projectChoices.getSelected().getKey());
 		dataset.put("projects", projectChoices);
 		dataset.put("difficultyLevels", choices);

@@ -1,5 +1,5 @@
 
-package acme.features.auditor.codeaudit;
+package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
 
@@ -64,8 +64,8 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		Collection<Mark> marks = this.repository.findMarksByAuditId(object.getId());
 		modeMark = EnumMode.mode(marks);
-		Collection<Project> unpublishedProjects = this.repository.findAllUnpublishedProjects();
-		projects = SelectChoices.from(unpublishedProjects, "title", object.getProject());
+		Collection<Project> allProjects = this.repository.findAllProjects();
+		projects = SelectChoices.from(allProjects, "code", object.getProject());
 		choices = SelectChoices.from(AuditType.class, object.getType());
 
 		dataset = super.unbind(object, "code", "published", "execution", "type", "correctiveActions", "link");

@@ -20,6 +20,7 @@ master.menu.sign-out = Sign out
 master.menu.any = Any
 master.menu.any.projects = List projects
 master.menu.any.claims = List claims
+master.menu.any.training-modules = List training modules
 
 # master.menu.anonymous #######################################################
 
@@ -69,11 +70,6 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
-# master.menu.client ##########################################################
-
-master.menu.client = Client
-master.menu.client.contract.list-mine = List my contracts
-
 # master.menu.manager ##########################################################
 
 master.menu.manager = Manager
@@ -85,6 +81,7 @@ master.menu.manager.show-dashboard = Dashboard
 
 master.menu.developer = Developer
 master.menu.developer.list-my-training-modules = List my training modules
+master.menu.developer.dashboard = Dashboard
 
 # master.menu.user-account ####################################################
 
@@ -96,3 +93,5 @@ master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.manager = Manager data
 master.menu.user-account.become-manager = Become a manager
+master.menu.user-account.developer = Developer data
+master.menu.user-account.become-developer = Become a developer

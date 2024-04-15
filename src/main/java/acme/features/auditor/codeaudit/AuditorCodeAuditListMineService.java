@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.auditor.codeaudit;
+package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
 
@@ -61,7 +61,7 @@ public class AuditorCodeAuditListMineService extends AbstractService<Auditor, Co
 		Collection<Mark> marks = this.repository.findMarksByAuditId(object.getId());
 		modeMark = EnumMode.mode(marks);
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "published");
+		dataset = super.unbind(object, "code", "type", "execution", "published");
 		dataset.put("modeMark", modeMark);
 
 		super.getResponse().addData(dataset);

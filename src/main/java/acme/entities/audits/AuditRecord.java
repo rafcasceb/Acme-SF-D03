@@ -46,8 +46,6 @@ public class AuditRecord extends AbstractEntity {
 	@NotNull
 	private Mark				mark;
 
-	// TODO: validation "at least one hour long" of this period.
-
 	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
 	@NotNull
