@@ -25,3 +25,4 @@ authenticated.notice.form.label.author = Autor
 authenticated.notice.form.label.confirmation = Confirmación
 
 authenticated.notice.form.button.create = Crear
+validation.notice.form.error.spam = Spam detectado

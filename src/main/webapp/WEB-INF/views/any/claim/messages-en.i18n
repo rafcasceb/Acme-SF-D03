@@ -28,3 +28,4 @@ any.claim.list.button.create = Create
 
 validation.claim.publish.message = You must confirm the claim before publishing it
 validation.claim.code.duplicate = This code is taken. Please, try with another code
+validation.claim.form.error.spam = Spam detected

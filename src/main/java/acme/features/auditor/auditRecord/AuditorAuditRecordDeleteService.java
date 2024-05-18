@@ -89,11 +89,14 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 	public void unbind(final AuditRecord object) {
 		assert object != null;
 
+		int auditorId;
+		auditorId = super.getRequest().getPrincipal().getActiveRoleId();
+
 		SelectChoices choices;
 		SelectChoices codeAudits;
 		Dataset dataset;
 
-		Collection<CodeAudit> allCodeAudits = this.repository.findAllCodeAudits();
+		Collection<CodeAudit> allCodeAudits = this.repository.findAllMyCodeAudits(auditorId);
 		codeAudits = SelectChoices.from(allCodeAudits, "code", object.getAudit());
 		choices = SelectChoices.from(Mark.class, object.getMark());
 

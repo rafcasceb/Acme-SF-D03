@@ -33,3 +33,4 @@ validation.codeaudit.auditrecord.zero-auditrecords = No se puede publicar una au
 validation.codeaudit.mode.empty = Esta auditoría de código no tiene registros de auditoría.
 validation.codeaudit.publish.unpublished-audit-records = No se puede publicar una auditoría de código con registros de auditoría no publicados
 validation.codeaudit.mode.less-than-c = La nota debe ser al menos una C para ser publicada
+validation.codeaudit.form.error.spam = Spam detectado

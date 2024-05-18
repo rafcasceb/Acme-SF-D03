@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.data.accounts.UserAccount;
 import acme.client.repositories.AbstractRepository;
+import acme.entities.configuration.Configuration;
 import acme.entities.notices.Notice;
 
 @Repository
@@ -25,5 +26,8 @@ public interface AuthenticatedNoticeRepository extends AbstractRepository {
 
 	@Query("select uc from UserAccount uc where uc.id =:id")
 	UserAccount findOneUserAccountById(int id);
+
+	@Query("select c from Configuration c")
+	Configuration findConfiguration();
 
 }

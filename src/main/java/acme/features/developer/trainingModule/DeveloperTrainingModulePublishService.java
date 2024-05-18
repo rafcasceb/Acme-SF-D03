@@ -2,6 +2,7 @@
 package acme.features.developer.trainingModule;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,11 +11,13 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.configuration.Configuration;
 import acme.entities.projects.Project;
 import acme.entities.trainingmodule.DifficultyLevel;
 import acme.entities.trainingmodule.TrainingModule;
 import acme.entities.trainingmodule.TrainingSession;
 import acme.roles.Developer;
+import spam_detector.SpamDetector;
 
 @Service
 public class DeveloperTrainingModulePublishService extends AbstractService<Developer, TrainingModule> {
@@ -85,16 +88,36 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		{
 			Collection<TrainingSession> sessions;
 			int totalSessions;
+			boolean publishedSessions = true;
 
 			sessions = this.repository.findManyTrainingSessionByModuleId(object.getId());
 			totalSessions = sessions.size();
 			super.state(totalSessions >= 1, "*", "developer.training-module.form.error.no-training-sessions");
+			for (TrainingSession ts : sessions)
+				if (!ts.isPublished()) {
+					publishedSessions = false;
+					break;
+				}
+			super.state(publishedSessions, "*", "developer.training-module.form.error.no-training-sessions-published");
+
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("details")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getDetails()), "details", "validation.training-module.form.error.spam");
 		}
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
+		Date moment;
+
+		moment = MomentHelper.getCurrentMoment();
+		object.setUpdateMoment(moment);
 
 		object.setPublished(true);
 		this.repository.save(object);
@@ -111,7 +134,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 		projects = this.repository.findManyProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
-		dataset = super.unbind(object, "code", "details", "difficultyLevel", "link", "estimatedTotalTime", "published", "project");
+		dataset = super.unbind(object, "code", "details", "difficultyLevel", "link", "estimatedTotalTime", "published", "project", "creationMoment");
 		dataset.put("difficultyLevels", choices);
 		dataset.put("project", projectsChoices.getSelected().getKey());
 		dataset.put("projects", projectsChoices);

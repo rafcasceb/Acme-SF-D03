@@ -1,5 +1,5 @@
 
-package acme.features.developer.developerdashboard;
+package acme.features.developer.developerDashboard;
 
 import java.util.Collection;
 
@@ -21,10 +21,10 @@ public interface DeveloperDashboardRepository extends AbstractRepository {
 	int totalTrainingSessionsWithLink(int id);
 
 	@Query("select avg(tm.estimatedTotalTime) from TrainingModule tm where tm.developer.id = :id")
-	double averageTrainingModulesTime(int id);
+	Double averageTrainingModulesTime(int id);
 
 	@Query("select stddev(tm.estimatedTotalTime) from TrainingModule tm where tm.developer.id = :id")
-	double deviatonTrainingModulesTime(int id);
+	Double deviatonTrainingModulesTime(int id);
 
 	@Query("select min(tm.estimatedTotalTime) from TrainingModule tm where tm.developer.id = :id")
 	int minimumTrainingModulesTime(int id);

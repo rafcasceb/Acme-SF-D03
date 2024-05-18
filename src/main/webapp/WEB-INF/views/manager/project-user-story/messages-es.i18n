@@ -17,5 +17,6 @@ manager.project-user-story.form.label.linked-project = Proyecto conectado
 manager.project-user-story.form.button.link = Conectar
 manager.project-user-story.form.button.unlink = Desconectar
 
+manager.project-user-story.form.error.no-project = No se eligió ningún proyecto
 manager.project-user-story.form.error.published = No se puede editar un proyecto ya publicado
 manager.project-user-story.form.error.manager =  El proyecto y la historia de usuario deben pertenecer al mismo manager

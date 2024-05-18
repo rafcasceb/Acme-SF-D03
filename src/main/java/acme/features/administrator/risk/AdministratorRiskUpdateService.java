@@ -10,7 +10,9 @@ import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.entities.configuration.Configuration;
 import acme.entities.risks.Risk;
+import spam_detector.SpamDetector;
 
 @Service
 public class AdministratorRiskUpdateService extends AbstractService<Administrator, Risk> {
@@ -79,6 +81,14 @@ public class AdministratorRiskUpdateService extends AbstractService<Administrato
 
 		if (!super.getBuffer().getErrors().hasErrors("probability"))
 			super.state(object.getProbability() >= 0.0 && object.getProbability() <= 1.0, "probability", "administrator.risk.form.error.probability");
+
+		if (!super.getBuffer().getErrors().hasErrors("description")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getDescription()), "description", "administrator.risk.form.error.spam");
+		}
 	}
 
 	@Override

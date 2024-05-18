@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.configuration.Configuration;
 import acme.entities.projects.Project;
 import acme.entities.trainingmodule.TrainingModule;
 import acme.entities.trainingmodule.TrainingSession;
@@ -41,5 +42,8 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 
 	@Query("select t from TrainingModule t where t.code = :code")
 	TrainingModule findOneTrainingModuleByCode(String code);
+
+	@Query("select c from Configuration c")
+	Configuration findConfiguration();
 
 }

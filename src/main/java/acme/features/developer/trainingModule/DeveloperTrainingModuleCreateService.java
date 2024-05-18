@@ -11,10 +11,12 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.configuration.Configuration;
 import acme.entities.projects.Project;
 import acme.entities.trainingmodule.DifficultyLevel;
 import acme.entities.trainingmodule.TrainingModule;
 import acme.roles.Developer;
+import spam_detector.SpamDetector;
 
 @Service
 public class DeveloperTrainingModuleCreateService extends AbstractService<Developer, TrainingModule> {
@@ -76,6 +78,14 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
 			super.state(MomentHelper.isAfter(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.not-after");
+
+		if (!super.getBuffer().getErrors().hasErrors("details")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getDetails()), "details", "validation.training-module.form.error.spam");
+		}
 	}
 
 	@Override
@@ -86,7 +96,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 		moment = MomentHelper.getCurrentMoment();
 		object.setCreationMoment(moment);
-
+		object.setUpdateMoment(moment);
 		this.repository.save(object);
 	}
 
@@ -100,7 +110,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		Dataset dataset;
 
 		projects = this.repository.findManyProjects();
-		projectChoices = SelectChoices.from(projects, "title", object.getProject());
+		projectChoices = SelectChoices.from(projects, "code", object.getProject());
 		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 
 		dataset = super.unbind(object, "code", "details", "difficultyLevel", "link", "estimatedTotalTime", "published");

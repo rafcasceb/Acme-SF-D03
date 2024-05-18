@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.configuration.Configuration;
 import acme.entities.projects.Project;
 import acme.roles.Manager;
+import spam_detector.SpamDetector;
 
 @Service
 public class ManagerProjectCreateService extends AbstractService<Manager, Project> {
@@ -49,11 +51,22 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	public void validate(final Project object) {
 		assert object != null;
 
+		Configuration config = this.repository.findConfiguration();
+		String spamTerms = config.getSpamTerms();
+		Double spamThreshold = config.getSpamThreshold();
+		SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Project projectSameCode;
 			projectSameCode = this.repository.findProjectByCode(object.getCode());
 			super.state(projectSameCode == null, "code", "manager.project.form.error.duplicate");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("title"))
+			super.state(!spamHelper.isSpam(object.getTitle()), "title", "manager.project.form.error.spam");
+
+		if (!super.getBuffer().getErrors().hasErrors("abstractDescription"))
+			super.state(!spamHelper.isSpam(object.getAbstractDescription()), "abstractDescription", "manager.project.form.error.spam");
 	}
 
 	@Override

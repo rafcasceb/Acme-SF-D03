@@ -1,0 +1,38 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.objective.form.title = Objective form
+
+
+administrator.objective.form.label.instantiationMoment = Instantiation Moment
+administrator.objective.form.label.title = Title
+administrator.objective.form.label.description = Description
+administrator.objective.form.label.priority = Priority
+administrator.objective.form.label.critical = Critical
+administrator.objective.form.label.startDate = Start Date
+administrator.objective.form.label.endDate = End Date
+administrator.objective.form.label.link = Link
+administrator.objective.form.label.confirmation = Please, confirm that the objective is correct.
+
+
+administrator.objective.form.button.create = Publish
+
+administrator.objective.form.error.confirmation = You must confirm the objective before publishing it
+validation.objective.moment.startDate = The start date must be in the future
+validation.objective.moment.start-after-end = The start date must be before the end date
+validation.objective.moment.minimum-one-hour = The time between the start and the end date must be of at least an hour long
+admininstrator.objective.form.error.dateOutOfBounds =  All dates must be prior to 2200/12/31 23:59
+validation.objective.moment.endDate = The end date must be in the future
+administrator.objective.form.error.spam = Spam detected
+validation.objective.form.error.startDateBeforeEndDate = Start date must be before end date
+
+
+
+

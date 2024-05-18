@@ -17,5 +17,6 @@ manager.project-user-story.form.label.linked-project = Linked project
 manager.project-user-story.form.button.link = Link
 manager.project-user-story.form.button.unlink = Unlink
 
+manager.project-user-story.form.error.no-project = No project was selected
 manager.project-user-story.form.error.published = A published project cannot be updated
 manager.project-user-story.form.error.manager = The project and the user story must belong to the same manager

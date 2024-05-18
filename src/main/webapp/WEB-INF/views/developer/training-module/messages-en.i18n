@@ -34,6 +34,7 @@ developer.training-module.form.error.duplicated = This reference is taken
 developer.training-module.form.error.not-after = Update moment must be after creation moment
 developer.training-module.form.error.already-published = A published training module cannot be updated or deleted
 developer.training-module.form.error.no-training-sessions = A published training module without training sessions cannot be published.
+developer.training-module.form.error.no-training-sessions-published = A published training module has to have all its training sessions published.
 
 developer.training-module.list.label.code = Code
 developer.training-module.list.label.creation-moment = Creation Moment
@@ -44,4 +45,5 @@ developer.training-module.list.label.link = Link
 developer.training-module.list.label.estimated-total-time = Estimated Total Time
 developer.training-module.list.label.published = Published
 developer.training-module.list.button.create = Create
+validation.training-module.form.error.spam = Spam detected
 

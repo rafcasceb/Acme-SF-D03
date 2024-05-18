@@ -33,3 +33,4 @@ administrator.risk.form.error.duplicate = The reference of a risk must be unique
 administrator.risk.form.error.identification-date = Identification date must be after 2000/01/01
 administrator.risk.form.error.impact = Impact must be in range [0.0, 1.0]
 administrator.risk.form.error.probability = Probability must be in range [0.0, 1.0]
+administrator.risk.form.error.spam = Spam detected

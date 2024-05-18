@@ -14,3 +14,5 @@ administrator.configuration.form.label.defaultCurrency = Moneda del sistema
 administrator.configuration.form.label.acceptedCurrencies = Monedas aceptadas
 
 administrator.configuration.form.button.update = Actualizar
+administrator.configuration.form.label.spamTerms = Terminos spam
+administrator.configuration.form.label.spamThreshold = Ratio limite de spam

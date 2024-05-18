@@ -70,8 +70,11 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(!object.getProject().isPublished(), "project", "manager.project-user-story.form.error.published");
+		if (!super.getBuffer().getErrors().hasErrors("projectId"))
+			super.state(object.getProject() != null, "projectId", "manager.project-user-story.form.error.no-project");
+
+		if (!super.getBuffer().getErrors().hasErrors("projectId") && object.getProject() != null)
+			super.state(!object.getProject().isPublished(), "projectId", "manager.project-user-story.form.error.published");
 	}
 
 	@Override

@@ -30,3 +30,4 @@ manager.user-story.form.button.link-project = Link project
 manager.user-story.form.button.unlink-project = Unlink project
 
 manager.user-story.form.error.already-published = A published user story cannot be updated or deleted
+manager.user-story.form.error.spam = Spam detected

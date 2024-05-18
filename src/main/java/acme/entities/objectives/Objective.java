@@ -50,7 +50,6 @@ public class Objective extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				startDate;
 
-	//TODO: hacer la restriccion en el servicio;minimo 1h de diferencia 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDate;

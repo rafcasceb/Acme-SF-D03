@@ -29,7 +29,7 @@
 			<acme:submit code="client.progresslog.form.button.publish" action="/client/progress-log/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="client.progresslog.form.button.create" action="/auditor/progress-log/create"/>
+			<acme:submit code="client.progresslog.form.button.create" action="/client/progress-log/create"/>
 		</jstl:when>
 	</jstl:choose>
 </acme:form>

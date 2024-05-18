@@ -44,7 +44,7 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 	public void bind(final Configuration object) {
 		assert object != null;
 
-		super.bind(object, "defaultCurrency", "acceptedCurrencies");
+		super.bind(object, "defaultCurrency", "acceptedCurrencies", "spamTerms", "spamThreshold");
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "defaultCurrency", "acceptedCurrencies");
+		dataset = super.unbind(object, "defaultCurrency", "acceptedCurrencies", "spamTerms", "spamThreshold");
 
 		super.getResponse().addData(dataset);
 	}

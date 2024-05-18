@@ -23,12 +23,13 @@ client.progresslog.label.responsiblePerson = Responsable
 client.progresslog.label.contract = Contrato asociado
 
 
-client.progresslog.list.button.create = Create
-client.progresslog.form.button.create = Create
-client.progresslog.form.button.update = Save changes
-client.progresslog.form.button.delete = Delete
-client.progresslog.form.button.publish = Publish
+client.progresslog.list.button.create = Crear
+client.progresslog.form.button.create = Crear
+client.progresslog.form.button.update = Guardar cambios
+client.progresslog.form.button.delete = Eliminar
+client.progresslog.form.button.publish = Publicar
 
-client.contract.form.error.duplicate = Este código ya está en uso
-manager.project.form.error.unpublished-user-stories = No se puede publicar un proyecto con Historias de usuario no publicadas
-client.contract.form.error.already-published = No se puede editar o eliminar un contrato ya publicado
+validation.progresslog.code.duplicate = Este codigo ya está en uso
+validation.progresslog.published.contract-is-published = Este contrato ya está publicado
+validation.progresslog.published = Este registro de progreso ya ha sido publicado
+client.progresslog.form.error.spam = Spam detectado

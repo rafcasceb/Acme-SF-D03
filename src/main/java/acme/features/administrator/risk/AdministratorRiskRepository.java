@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.configuration.Configuration;
 import acme.entities.risks.Risk;
 
 @Repository
@@ -21,4 +22,6 @@ public interface AdministratorRiskRepository extends AbstractRepository {
 	@Query("select r from Risk r where r.reference = :reference")
 	Risk findRiskByReference(String reference);
 
+	@Query("select c from Configuration c")
+	Configuration findConfiguration();
 }

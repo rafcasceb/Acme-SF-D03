@@ -28,6 +28,7 @@ client.progresslog.form.button.delete = Delete
 client.progresslog.form.button.publish = Publish
 
 
-client.contract.form.error.duplicate = This code is already in use
-manager.project.form.error.zero-user-stories = A project without User stories cannot be published
-client.contract.form.error.already-published = A published contract cannot be updated or deleted
+validation.progresslog.code.duplicate = This code is already in use
+validation.progresslog.published.contract-is-published = This contract is already published
+validation.progresslog.published = This progress log is already published
+client.progresslog.form.error.spam = Spam detected

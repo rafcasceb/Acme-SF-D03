@@ -1,12 +1,15 @@
 
 package acme.features.auditor.auditRecord;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.audits.AuditRecord;
@@ -56,12 +59,52 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "publish");
+		int codeAuditId;
+		CodeAudit codeAudit;
+
+		codeAuditId = super.getRequest().getData("audit", int.class);
+		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
+
+		object.setAudit(codeAudit);
+		super.bind(object, "code", "link", "mark", "initialMoment", "finalMoment");
 	}
 
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
+
+		Date pastMostDate = MomentHelper.parse("2000/01/01 00:00", "yyyy/MM/dd HH:mm");
+
+		if (!super.getBuffer().getErrors().hasErrors("audit"))
+			super.state(!object.getAudit().isPublished(), "audit", "validation.auditrecord.published.audit-is-published");
+
+		if (!super.getBuffer().getErrors().hasErrors("published"))
+			super.state(!object.isPublished(), "published", "validation.auditrecord.published");
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			AuditRecord isCodeUnique;
+			isCodeUnique = this.repository.findAuditRecordByCodeDifferentId(object.getCode(), object.getId());
+			super.state(isCodeUnique == null, "code", "validation.auditrecord.code.duplicate");
+		}
+
+		if (object.getInitialMoment() != null && object.getFinalMoment() != null) {
+
+			if (!super.getBuffer().getErrors().hasErrors("initialMoment"))
+				super.state(MomentHelper.isAfterOrEqual(object.getInitialMoment(), pastMostDate), "initialMoment", "validation.auditrecord.moment.minimum-date");
+
+			if (!super.getBuffer().getErrors().hasErrors("finalMoment"))
+				super.state(MomentHelper.isAfterOrEqual(object.getFinalMoment(), pastMostDate), "finalMoment", "validation.auditrecord.moment.minimum-date");
+
+			if (!super.getBuffer().getErrors().hasErrors("initialMoment"))
+				super.state(MomentHelper.isAfter(object.getFinalMoment(), object.getInitialMoment()), "initialMoment", "validation.auditrecord.moment.initial-after-final");
+
+			if (!super.getBuffer().getErrors().hasErrors("finalMoment")) {
+				Date minimumEnd;
+
+				minimumEnd = MomentHelper.deltaFromMoment(object.getInitialMoment(), 1, ChronoUnit.HOURS);
+				super.state(MomentHelper.isAfterOrEqual(object.getFinalMoment(), minimumEnd), "finalMoment", "validation.auditrecord.moment.minimum-one-hour");
+			}
+		}
 
 	}
 
@@ -77,11 +120,14 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	public void unbind(final AuditRecord object) {
 		assert object != null;
 
+		int auditorId;
+		auditorId = super.getRequest().getPrincipal().getActiveRoleId();
+
 		SelectChoices choices;
 		SelectChoices codeAudits;
 		Dataset dataset;
 
-		Collection<CodeAudit> allCodeAudits = this.repository.findAllCodeAudits();
+		Collection<CodeAudit> allCodeAudits = this.repository.findAllMyCodeAudits(auditorId);
 		codeAudits = SelectChoices.from(allCodeAudits, "code", object.getAudit());
 		choices = SelectChoices.from(Mark.class, object.getMark());
 

@@ -28,10 +28,9 @@ public class AdministratorDashboard extends AbstractForm {
 	private Double				maximumValueInRisks;
 	private Double				minimumValueInRisks;
 
-	//TODO: average, minimum, maximum, and standard deviation of the number of claims posted over the last 10 weeks
-	private Double				avgNumberOfClaimsLastTenWeeks;
-	private Double				stanDevNumberOfClaimsLastTenWeeks;
-	private Integer				maximumNumberOfClaimsLastTenWeeks;
-	private Integer				minimumNumberOfClaimsLastTenWeeks;
+	private double				avgNumberOfClaimsLastTenWeeks;
+	private double				stanDevNumberOfClaimsLastTenWeeks;
+	private int					maximumNumberOfClaimsLastTenWeeks;
+	private int					minimumNumberOfClaimsLastTenWeeks;
 
 }

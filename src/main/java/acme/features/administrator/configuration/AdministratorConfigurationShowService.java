@@ -45,7 +45,7 @@ public class AdministratorConfigurationShowService extends AbstractService<Admin
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "defaultCurrency", "acceptedCurrencies");
+		dataset = super.unbind(object, "defaultCurrency", "acceptedCurrencies", "spamTerms", "spamThreshold");
 
 		super.getResponse().addData(dataset);
 	}

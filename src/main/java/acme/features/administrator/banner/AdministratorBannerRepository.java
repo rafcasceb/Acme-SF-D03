@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.banners.Banner;
+import acme.entities.configuration.Configuration;
 
 @Repository
 public interface AdministratorBannerRepository extends AbstractRepository {
@@ -28,5 +29,8 @@ public interface AdministratorBannerRepository extends AbstractRepository {
 
 	@Query("select b from Banner b")
 	Collection<Banner> findAllBanners();
+
+	@Query("select c from Configuration c")
+	Configuration findConfiguration();
 
 }

@@ -54,7 +54,6 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 	@Override
 	public void bind(final ProgressLog object) {
 		assert object != null;
-		System.out.print("BIND");
 		int contractId;
 		Contract contract;
 
@@ -63,19 +62,13 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 
 		object.setContract(contract);
 		super.bind(object, "recordId", "completeness", "comment", "responsiblePerson");
-		System.out.print("BIND FINAL");
-		System.out.print(object.getRegistrationMoment());
 
 	}
 
 	@Override
 	public void validate(final ProgressLog object) {
-		System.out.print("VALIDATE");
-		assert object != null;
-		System.out.println("VALIDADO");
 
-		if (!super.getBuffer().getErrors().hasErrors("contract"))
-			super.state(!object.getContract().isPublished(), "contract", "validation.progresslog.published.contract-is-published");
+		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("published"))
 			super.state(!object.isPublished(), "published", "validation.progresslog.published");
@@ -85,20 +78,23 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 	@Override
 	public void perform(final ProgressLog object) {
 		assert object != null;
-		System.out.print("PERFORM");
+
 		this.repository.delete(object);
 	}
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		System.out.println("UNBINF");
+
 		assert object != null;
 
 		SelectChoices contracts;
 		Dataset dataset;
 
-		Collection<Contract> unpublishedContracts = this.repository.findAllUnpublishedContracts();
-		contracts = SelectChoices.from(unpublishedContracts, "code", object.getContract());
+		int clientId;
+		clientId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		Collection<Contract> allContracts = this.repository.findAllMyContracts(clientId);
+		contracts = SelectChoices.from(allContracts, "code", object.getContract());
 
 		dataset = super.unbind(object, "recordId", "completeness", "comment", "responsiblePerson", "published");
 		dataset.put("contract", contracts.getSelected().getKey());

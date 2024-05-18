@@ -10,7 +10,9 @@ import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.entities.configuration.Configuration;
 import acme.entities.notices.Notice;
+import spam_detector.SpamDetector;
 
 @Service
 public class AuthenticatedNoticeCreateService extends AbstractService<Authenticated, Notice> {
@@ -66,6 +68,22 @@ public class AuthenticatedNoticeCreateService extends AbstractService<Authentica
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getTitle()), "title", "validation.notice.form.error.spam");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("message")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getMessage()), "message", "validation.notice.form.error.spam");
+		}
 
 	}
 

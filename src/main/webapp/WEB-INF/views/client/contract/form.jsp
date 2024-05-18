@@ -34,6 +34,9 @@
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="client.contract.form.button.create" action="/client/contract/create"/>
 		</jstl:when>	
+		<jstl:when test="${_command == 'show'}">	
+			<acme:button code="client.contract.form.button.progressLog" action="/client/progress-log/list-for-contracts?contractId=${id}"/>
+		</jstl:when>
 	</jstl:choose>
 
 </acme:form>

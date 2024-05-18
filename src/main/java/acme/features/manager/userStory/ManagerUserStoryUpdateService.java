@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.configuration.Configuration;
 import acme.entities.projects.UserStory;
 import acme.entities.projects.UserStoryPriority;
 import acme.roles.Manager;
+import spam_detector.SpamDetector;
 
 @Service
 public class ManagerUserStoryUpdateService extends AbstractService<Manager, UserStory> {
@@ -59,8 +61,19 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 	public void validate(final UserStory object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("published"))
-			super.state(!object.isPublished(), "published", "manager.user-story.form.error.already-published");
+		Configuration config = this.repository.findConfiguration();
+		String spamTerms = config.getSpamTerms();
+		Double spamThreshold = config.getSpamThreshold();
+		SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+
+		if (!super.getBuffer().getErrors().hasErrors("title"))
+			super.state(!spamHelper.isSpam(object.getTitle()), "title", "manager.user-story.form.error.spam");
+
+		if (!super.getBuffer().getErrors().hasErrors("description"))
+			super.state(!spamHelper.isSpam(object.getDescription()), "description", "manager.user-story.form.error.spam");
+
+		if (!super.getBuffer().getErrors().hasErrors("acceptanceCriteria"))
+			super.state(!spamHelper.isSpam(object.getAcceptanceCriteria()), "acceptanceCriteria", "manager.user-story.form.error.spam");
 	}
 
 	@Override

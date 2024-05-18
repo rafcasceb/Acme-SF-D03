@@ -39,8 +39,6 @@ public class ProgressLog extends AbstractEntity {
 	@NotBlank
 	private String				recordId;
 
-	//TODO: ver si el rango es de 0.00 a 100.00 o de 0.00 a 1.00
-	//TODO: ver si el incremento tiene que ser estrictamente positivo respecto al anterior PG
 	@DecimalMin(value = "0.00", inclusive = true)
 	@DecimalMax(value = "100.00", inclusive = true)
 	@Digits(integer = 3, fraction = 2)
@@ -50,7 +48,6 @@ public class ProgressLog extends AbstractEntity {
 	@Length(max = 100)
 	private String				comment;
 
-	//TODO: esta hora tiene que ser posterior a la de creacion del contrato (servicio)
 	@NotNull
 	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)

@@ -32,3 +32,4 @@ validation.codeaudit.auditrecord.zero-auditrecords = A code audit with zero audi
 validation.codeaudit.mode.empty = This code audit does not have any audit records.
 validation.codeaudit.mode.less-than-c = The mark must be at least a C to be published
 validation.codeaudit.publish.unpublished-audit-records = You cannot publish a code audit with unpublished audit records
+validation.codeaudit.form.error.spam = Spam detected

@@ -1,2 +1,2 @@
-key,default-currency,accepted-currencies
-configuration-01,EUR,"EUR, USD, GBP"
+key,default-currency,accepted-currencies,spam-terms,spam-threshold
+configuration-01,EUR,"EUR, USD, GBP","sex, sexo, viagra, cialis, one million, un millón, you ve won, has ganado, nigeria",0.1

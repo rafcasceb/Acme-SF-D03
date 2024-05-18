@@ -96,12 +96,12 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 	public Double computeDeviation(final Collection<Double> values) {
 		Double res;
 		Double aux;
-		res = 0.0;
+		res = null;
 		if (!values.isEmpty()) {
 			Double average = this.calculateAverage(values);
 			aux = 0.0;
 			for (final Double value : values)
-				aux += Math.pow(value + average, 2);
+				aux += Math.pow(value - average, 2);
 			res = Math.sqrt(aux / values.size());
 		}
 		return res;

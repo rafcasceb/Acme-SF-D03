@@ -1,0 +1,20 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+client.client-dashboard.form.title = Panel de estadística de cliente
+
+client.dashboard.form.label.completenessFirstPercentile = Número de registros de progreso por debajo del 25% de completitud
+client.dashboard.form.label.completenessSecondPercentile = Número de registros de progreso entre el 25% y 50% de completitud
+client.dashboard.form.label.completenessThirdPercentile = Número de registros de progreso entre el 50% y 75% de completitud
+client.dashboard.form.label.completenessFourthPercentile = Número de registros de progreso por encima del 75% de completitud
+client.dashboard.form.label.contractBudgetAverage = Media de cantidad de dinero en presupuestos (Divisa predeterminada)
+client.dashboard.form.label.contractBudgetDeviation = Desviación de cantidad de dinero en presupuestos (Divisa predeterminada)
+client.dashboard.form.label.minimumBudget = Máxima cantidad de dinero en presupuestos (Divisa predeterminada)
+client.dashboard.form.label.maximumBudget = Mínima cantidad de dinero en presupuestos (Divisa predeterminada)

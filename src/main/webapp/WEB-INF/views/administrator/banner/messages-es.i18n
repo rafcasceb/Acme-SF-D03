@@ -15,6 +15,7 @@ administrator.banner.form.label.displayEndDate = Fecha de finialización
 administrator.banner.form.label.slogan = Slogan
 administrator.banner.form.label.picture = Imagen
 administrator.banner.form.label.target = Link
+administrator.banner.form.error.spam = Spam detectado
 
 administrator.banner.list.title = Lista de Banners
 administrator.banner.list.label.slogan = Slogan
@@ -29,3 +30,5 @@ administrator.banner.form.label.confirmation = Porfavor, confirme que el banner 
 administrator.banner.form.error.startDate = La fecha de inicialización debe ser en el futuro
 administrator.banner.form.error.period = El periódo de validez debe ser superior a una semana
 administrator.banner.form.error.endDate = La fecha de finalización debe ser posterior a la de inicialización
+administrator.banner.form.error.dateOutOfBounds = Toda fecha debe ser anterior al 2201/01/01 00:00
+administrator.banner.form.error.startDateAfterEndDate = La fecha de inicio debe ser anterior a la de finalización

@@ -9,7 +9,9 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
+import acme.entities.configuration.Configuration;
 import acme.roles.Auditor;
+import spam_detector.SpamDetector;
 
 @Service
 public class AuthenticatedAuditorUpdateService extends AbstractService<Authenticated, Auditor> {
@@ -50,6 +52,36 @@ public class AuthenticatedAuditorUpdateService extends AbstractService<Authentic
 	@Override
 	public void validate(final Auditor object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("professionalID")) {
+			Auditor isCodeUnique;
+			isCodeUnique = this.repository.findAuditorByCodeDifferentId(object.getProfessionalID(), object.getId());
+			super.state(isCodeUnique == null, "professionalID", "validation.auditor.code.duplicate");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("professionalID")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getProfessionalID()), "professionalID", "validation.auditor.form.error.spam");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("firm")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getFirm()), "firm", "validation.auditor.form.error.spam");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("certifications")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getCertifications()), "certifications", "validation.auditor.form.error.spam");
+		}
 	}
 
 	@Override

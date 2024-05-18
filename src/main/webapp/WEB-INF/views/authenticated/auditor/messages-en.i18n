@@ -17,3 +17,6 @@ authenticated.auditor.form.label.link = Link
 
 authenticated.auditor.form.button.create = Register
 authenticated.auditor.form.button.update = Update
+
+validation.auditor.code.duplicate = This code is taken. Please, try with another code
+validation.auditor.form.error.spam = Spam detected

@@ -26,6 +26,7 @@ auditor.auditrecord.form.button.publish = Publicar
 
 validation.auditrecord.code.duplicate = Este código no está disponible. Por favor, pruebe con otro código
 validation.auditrecord.moment.initial-after-final = La fecha de inicio debe ser anterior a la fecha de finalización
+validation.auditrecord.moment.minimum-date = La fecha mínima es 01/01/2000 00:00
 validation.auditrecord.moment.minimum-one-hour = El tiempo entre la fecha de inicio y la fecha de finalización debe ser de al menos una hora
 validation.auditrecord.published = No puedes borrar ni modificar una auditoría de código publicada
 validation.auditrecord.published.audit-is-published = Esta auditoría de código ya ha sido publicada

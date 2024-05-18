@@ -56,11 +56,14 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 	public void unbind(final AuditRecord object) {
 		assert object != null;
 
+		int auditorId;
+		auditorId = super.getRequest().getPrincipal().getActiveRoleId();
+
 		SelectChoices choices;
 		SelectChoices codeAudits;
 		Dataset dataset;
 
-		Collection<CodeAudit> unpublishedCodeAudits = this.repository.findAllCodeAudits();
+		Collection<CodeAudit> unpublishedCodeAudits = this.repository.findAllMyCodeAudits(auditorId);
 		codeAudits = SelectChoices.from(unpublishedCodeAudits, "code", object.getAudit());
 		choices = SelectChoices.from(Mark.class, object.getMark());
 

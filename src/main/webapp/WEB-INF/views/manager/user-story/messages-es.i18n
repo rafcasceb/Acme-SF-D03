@@ -31,3 +31,4 @@ manager.user-story.form.button.link-project = Conectar proyecto
 manager.user-story.form.button.unlink-project = Desconectar proyecto
 
 manager.user-story.form.error.already-published = No se puede editar o eliminar una historia de usuario ya publicada
+manager.user-story.form.error.spam = Spam detectado

@@ -18,6 +18,9 @@
 <acme:form>
 	<acme:input-textbox code="administrator.configuration.form.label.defaultCurrency" path="defaultCurrency"/>	
 	<acme:input-textbox code="administrator.configuration.form.label.acceptedCurrencies" path="acceptedCurrencies"/>
+	<acme:input-textbox code="administrator.configuration.form.label.spamTerms" path="spamTerms"/>
+	<acme:input-textbox code="administrator.configuration.form.label.spamThreshold" path="spamThreshold"/>
+	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update')}">
 			<acme:submit code="administrator.configuration.form.button.update" action="/administrator/configuration/update"/>

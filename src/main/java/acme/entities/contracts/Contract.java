@@ -34,7 +34,6 @@ public class Contract extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	//TODO: ver si el patron esta bien implementado
 	@Column(unique = true)
 	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "{validation.contract.code}")
 	@NotBlank
@@ -58,7 +57,6 @@ public class Contract extends AbstractEntity {
 	private String				goals;
 
 	//TODO: implementar custom constrain budget <= coste total del proyecto asociado
-	//TODO: tiene que ser positivo > 0
 	@NotNull
 	private Money				budget;
 

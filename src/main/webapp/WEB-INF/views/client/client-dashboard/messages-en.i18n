@@ -1,0 +1,22 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+client.client-dashboard.form.title = Client dashboard
+
+client.dashboard.form.label.completenessFirstPercentile = Total progress logs with completeness bellow 25%
+client.dashboard.form.label.completenessSecondPercentile = Total progress logs with completeness between 25% and 50%
+client.dashboard.form.label.completenessThirdPercentile = Total progress logs with completeness between 50% and 75%
+client.dashboard.form.label.completenessFourthPercentile = Total progress logs with completeness above 75%
+client.dashboard.form.label.contractBudgetAverage = Average amount on budgets (Default currency)
+client.dashboard.form.label.contractBudgetDeviation = Deviation in amount on budgets (Default currency)
+client.dashboard.form.label.minimumBudget = Maximum amount on budgets (Default currency)
+client.dashboard.form.label.maximumBudget = Minimum amount on budgets (Default currency)
+
+

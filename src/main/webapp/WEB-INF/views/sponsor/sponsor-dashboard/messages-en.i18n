@@ -1,0 +1,23 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.sponsor-dashboard.form.title = Sponsor dashboard
+
+sponsor.dashboard.form.label.totalNumberInvoicesTaxEqualOrLessThan21 = Total number of invoices with tax equal or less than 21
+sponsor.dashboard.form.label.totalNumberSponsorshipsWithLink = Total number of sponsorships with link
+sponsor.dashboard.form.label.averageAmountSponsorshipsEUR = Average amount of sponsorships
+sponsor.dashboard.form.label.stdevAmountSponsorships = Standard deviation of amount of sponsorships
+sponsor.dashboard.form.label.minimumAmountSponsorships = Minimum amount of sponsorships
+sponsor.dashboard.form.label.maximumAmountSponsorships = Maximum amount of sponsorships
+sponsor.dashboard.form.label.averageQuantityInvoices = Average quantity of invoices
+sponsor.dashboard.form.label.stdevQuantityInvoices = Standard deviation of quantity of invoices
+sponsor.dashboard.form.label.minimumQuantityInvoices = Minimum quantity of invoices
+sponsor.dashboard.form.label.maximumQuantityInvoices = Maximum quantity of invoices
+

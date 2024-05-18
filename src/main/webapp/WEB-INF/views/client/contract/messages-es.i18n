@@ -34,5 +34,12 @@ client.contract.form.button.publish = Publicar
 client.contract.form.button.progressLog = Ver registros de progreso
 
 client.contract.form.error.duplicate = Este código ya está en uso
-manager.project.form.error.unpublished-user-stories = No se puede publicar un proyecto con Historias de usuario no publicadas
 client.contract.form.error.already-published = No se puede editar o eliminar un contrato ya publicado
+validation.contract.publish.unpublished-progress-log = Este contrato tiene registros de progreso sin publicar
+client.contract.form.error.budgetPositive = La cantidad debe ser positiva
+client.contract.form.error.budgetRange = La cantidad máxima de dinero es de 1000000.00
+client.contract.form.error.currency = El sistema no tiene soporte para esta divisa
+validation.contract.published.project-is-published = El proyecto ya esta publicado. Elige otro
+client.contract.form.error.amount = La suma de los presupuestos excede el coste del proyecto
+
+client.contract.form.error.spam = Spam detectado

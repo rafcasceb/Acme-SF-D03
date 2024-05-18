@@ -31,5 +31,11 @@ client.contract.form.button.publish = Publish
 client.contract.form.button.progressLog = See progress logs
 
 client.contract.form.error.duplicate = This code is already in use
-manager.project.form.error.zero-user-stories = A project without User stories cannot be published
+validation.contract.publish.unpublished-progress-log = This contract has unpublished progress logs
 client.contract.form.error.already-published = A published contract cannot be updated or deleted
+client.contract.form.error.budgetPositive = The amount must be positive
+client.contract.form.error.budgetRange = The maximum amount of money is 1000000.00
+client.contract.form.error.currency = The system has not support for this currency
+validation.contract.published.project-is-published = This project is published. Choose another one
+client.contract.form.error.amount = The total budget of the contracts associated to the project exceeds the project cost
+client.contract.form.error.spam = Spam detected

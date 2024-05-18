@@ -17,11 +17,10 @@
 
 <acme:form>
 	<acme:input-textbox code="authenticated.objective.form.label.title" path="title"/>
-	<acme:input-textbox code="authenticated.objective.form.label.instantiationMoment" path="instantiationMoment"/>
 	<acme:input-textbox code="authenticated.objective.form.label.description" path="description"/>
 	<acme:input-textbox code="authenticated.objective.form.label.priority" path="priority"/>
-	<acme:input-textbox code="authenticated.objective.form.label.critical" path="critical"/>
-	<acme:input-textbox code="authenticated.objective.form.label.startDate" path="startDate"/>
-	<acme:input-textbox code="authenticated.objective.form.label.endDate" path="endDate"/>
-	<acme:input-textbox code="authenticated.objective.form.label.link" path="link"/>
+	<acme:input-checkbox code="authenticated.objective.form.label.critical" path="critical"/>
+	<acme:input-moment code="authenticated.objective.form.label.startDate" path="startDate"/>
+	<acme:input-moment code="authenticated.objective.form.label.endDate" path="endDate"/>
+	<acme:input-url code="authenticated.objective.form.label.link" path="link"/>
 </acme:form>

@@ -17,3 +17,6 @@ authenticated.auditor.form.label.link = Enlace
 
 authenticated.auditor.form.button.create = Registrar
 authenticated.auditor.form.button.update = Actualizar
+
+validation.auditor.code.duplicate = Este código no está disponible. Por favor, pruebe con otro código
+validation.auditor.form.error.spam = Spam detectado

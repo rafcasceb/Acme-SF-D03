@@ -64,9 +64,6 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	public void validate(final Project object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("published"))
-			super.state(!object.isPublished(), "published", "manager.project.form.error.already-published");
-
 		{
 			Collection<CodeAudit> codeAudits;
 			Collection<Contract> contracts;

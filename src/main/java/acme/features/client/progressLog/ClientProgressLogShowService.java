@@ -58,8 +58,11 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 		SelectChoices contracts;
 		Dataset dataset;
 
-		Collection<Contract> unpublishedContracts = this.repository.findAllUnpublishedContracts();
-		contracts = SelectChoices.from(unpublishedContracts, "code", object.getContract());
+		int clientId;
+		clientId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		Collection<Contract> allContracts = this.repository.findAllMyContracts(clientId);
+		contracts = SelectChoices.from(allContracts, "code", object.getContract());
 
 		dataset = super.unbind(object, "recordId", "completeness", "comment", "responsiblePerson", "published");
 		dataset.put("contract", contracts.getSelected().getKey());

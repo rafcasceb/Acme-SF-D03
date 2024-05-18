@@ -424,7 +424,7 @@ TrainingModule
 - updateMoment: Date{Temporal(TIMESTAMP),PastOrPresent}
 - link: String{URL}
 - estimatedTotalTime: int
-- draftMode: boolean
+- published: boolean
 
 bg=RED</panel_attributes>
     <additional_attributes/>
@@ -495,7 +495,8 @@ TrainingModule
 - location: String {NotBlank,Length(1,75)}
 - instructor: String (NotBlank, Length(1,75)}
 - email: String {Email}
-- link: String {UML}
+- link: String {URL}
+- published: boolean
 
 bg=RED</panel_attributes>
     <additional_attributes/>

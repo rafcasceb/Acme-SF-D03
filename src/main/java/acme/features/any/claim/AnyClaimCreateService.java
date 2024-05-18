@@ -11,6 +11,8 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.claims.Claim;
+import acme.entities.configuration.Configuration;
+import spam_detector.SpamDetector;
 
 @Service
 public class AnyClaimCreateService extends AbstractService<Any, Claim> {
@@ -61,6 +63,30 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 			boolean confirmation;
 			confirmation = super.getRequest().getData("confirmation", boolean.class);
 			super.state(confirmation, "confirmation", "validation.claim.publish.message");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("heading")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getHeading()), "heading", "validation.claim.form.error.spam");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("description")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getDescription()), "description", "validation.claim.form.error.spam");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("department")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getDepartment()), "department", "validation.claim.form.error.spam");
 		}
 	}
 

@@ -35,3 +35,8 @@ developer.training-session.form.button.create-training-session= Crear
 developer.training-session.form.button.update=Actualizar
 developer.training-session.form.button.delete=Eliminar
 developer.training-session.form.button.publish=Publicar
+
+developer.training-session.form.error.duplicated = Esta referencia está tomada.
+developer.training-session.form.error.creation-moment-invalid = El momento de creación debe ser al menos una semana después de la fecha de creación del módulo.
+developer.training-session.form.error.too-close = La fecha de finalización debe ser al menos una semana después de la fecha de inicio.
+developer.training-session.form.error.date-not-before-limit = La fecha de actualización debe ser antes del 01/01/2201 00:00

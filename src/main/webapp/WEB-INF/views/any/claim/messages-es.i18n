@@ -28,3 +28,4 @@ any.claim.list.button.create = Crear
 
 validation.claim.publish.message = Debes confirmar la reclamación antes de publicarla
 validation.claim.code.duplicate = Este código no está disponible. Por favor, pruebe con otro código
+validation.claim.form.error.spam = Spam detectado

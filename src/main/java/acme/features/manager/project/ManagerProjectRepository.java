@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.audits.CodeAudit;
+import acme.entities.configuration.Configuration;
 import acme.entities.contracts.Contract;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
@@ -49,4 +50,6 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select tm from TrainingModule tm where tm.project.id = :projectId")
 	Collection<TrainingModule> findManyTrainingModulesByProjectId(int projectId);
 
+	@Query("select c from Configuration c")
+	Configuration findConfiguration();
 }

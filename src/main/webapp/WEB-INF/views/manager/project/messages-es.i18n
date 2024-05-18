@@ -39,3 +39,4 @@ manager.project.form.error.children-contracts = El proyecto no puede ser elimina
 manager.project.form.error.children-sponsorships = El proyecto no puede ser eliminado porque tiene Patrocinios que dependen de él
 manager.project.form.error.children-training-modules = El proyecto no puede ser eliminado porque tiene Módulos de entrenamiento que dependen de él
 manager.project.form.error.already-published = No se puede editar o eliminar un proyecto ya publicado
+manager.project.form.error.spam = Spam detectado

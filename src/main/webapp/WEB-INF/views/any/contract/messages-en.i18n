@@ -1,0 +1,38 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+any.contract.list.title = Listing of published contracts
+any.contract.form.title = Contract form
+any.contract.list.label.published = Publishedany.contract.list.label.code = Code
+any.contract.list.label.providerName = Provider Name
+any.contract.list.label.customerName = Customer Name
+
+any.contract.form.label.code = Code
+any.contract.form.label.instantiationMoment = Instantiation Moment
+any.contract.form.label.providerName = Provider Name
+any.contract.form.label.customerName = Customer Name
+any.contract.form.label.budget = Budget
+any.contract.form.label.goals = Goals
+any.contract.form.label.published = Published
+any.contract.form.label.project = Associated project
+
+client.contract.list.button.create = Create
+client.contract.form.button.create = Create
+client.contract.form.button.update = Save changes
+client.contract.form.button.delete = Delete
+client.contract.form.button.publish = Publish
+any.contract.form.button.progressLog = See progress logs
+
+client.contract.form.error.duplicate = This code is already in use
+validation.contract.publish.unpublished-progress-log = This contract has unpublished progress logs
+client.contract.form.error.already-published = A published contract cannot be updated or deleted
+client.contract.form.error.budgetPositive = The amount must be positive
+client.contract.form.error.budgetRange = The maximum amount of money is 1000000.00
+client.contract.form.error.currency = The system has not support for this currency

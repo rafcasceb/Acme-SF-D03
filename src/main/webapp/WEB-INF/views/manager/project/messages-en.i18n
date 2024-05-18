@@ -37,3 +37,4 @@ manager.project.form.error.children-contracts = The project cannot be deleted be
 manager.project.form.error.children-sponsorships = The project cannot be deleted because it has Sponsorhips that depend on it
 manager.project.form.error.children-training-modules = The project cannot be deleted because it has Training modules that depend on it
 manager.project.form.error.already-published = A published project cannot be updated or deleted
+manager.project.form.error.spam = Spam detected

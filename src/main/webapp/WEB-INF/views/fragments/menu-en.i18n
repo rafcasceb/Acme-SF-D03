@@ -21,7 +21,9 @@ master.menu.any = Any
 master.menu.any.projects = List projects
 master.menu.any.claims = List claims
 master.menu.any.training-modules = List training modules
+master.menu.any.sponsorships = List sponsorships
 master.menu.any.codeaudits = List code audits
+master.menu.any.contracts = List contracts
 
 # master.menu.anonymous #######################################################
 
@@ -50,9 +52,10 @@ master.menu.administrator.risks = List risks
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
-master.menu.administrator.create-banner = Create banner
 master.menu.administrator.list-banner = List banners
 master.menu.administrator.configuration = System configuration
+master.menu.administrator.objective = Create objective
+master.menu.administrator.show-dashboard = Dashboard
 
 # master.menu.auditor ########################################################
 
@@ -66,6 +69,7 @@ master.menu.auditor.show-dashboard = Dashboard
 master.menu.client = Client
 master.menu.client.contract.list-mine = List my contracts
 master.menu.client.progress-log.list-mine = List my progress logs
+master.menu.client.show-dashboard = Dashboard
 
 # master.menu.provider ########################################################
 
@@ -83,6 +87,12 @@ master.menu.manager = Manager
 master.menu.manager.list-my-projects = List my projects
 master.menu.manager.list-my-user-stories = List my user stories
 master.menu.manager.show-dashboard = Dashboard
+# master.menu.sponsor ########################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.sponsorships = Sponsorships
+master.menu.sponsor.invoices = Invoices
+master.menu.sponsor.dashboard = Dashboard
 
 # master.menu.developer ##########################################################
 
@@ -94,9 +104,16 @@ master.menu.developer.dashboard = Dashboard
 
 master.menu.user-account = Account
 master.menu.user-account.general-data = General data
+
+master.menu.user-account.become-sponsor = Become a sponsor
+master.menu.user-account.sponsor = Sponsor data
 master.menu.user-account.manager = Manager data
 master.menu.user-account.become-manager = Become a manager
 master.menu.user-account.developer = Developer data
 master.menu.user-account.become-developer = Become a developer
 master.menu.user-account.auditor = Auditor data
 master.menu.user-account.become-auditor = Become an auditor
+master.menu.user-account.become-client = Become a client
+master.menu.user-account.client = Client data
+
+

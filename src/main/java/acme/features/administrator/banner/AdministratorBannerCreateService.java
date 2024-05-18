@@ -23,6 +23,8 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.banners.Banner;
+import acme.entities.configuration.Configuration;
+import spam_detector.SpamDetector;
 
 @Service
 public class AdministratorBannerCreateService extends AbstractService<Administrator, Banner> {
@@ -31,6 +33,8 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 
 	@Autowired
 	private AdministratorBannerRepository repository;
+
+	// Spam detector
 
 	// AbstractService interface ----------------------------------------------
 
@@ -43,22 +47,9 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	@Override
 	public void load() {
 		Banner object;
-		Date moment;
-		Date startMoment;
-		Date endMoment;
-		long aDayInMs = 24 * 60 * 60 * 1000;
-
-		moment = MomentHelper.getCurrentMoment();
-		startMoment = new Date(moment.getTime() + aDayInMs);
-		endMoment = new Date(startMoment.getTime() + aDayInMs * 7);
 
 		object = new Banner();
-		object.setMoment(moment);
-		object.setDisplayStartMoment(startMoment);
-		object.setDisplayEndMoment(endMoment);
-		object.setPicture("");
-		object.setSlogan("");
-		object.setTarget("");
+		object.setMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(object);
 	}
@@ -73,18 +64,45 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	@Override
 	public void validate(final Banner object) {
 		assert object != null;
-		boolean confirmation;
 
-		if (!super.getBuffer().getErrors().hasErrors("displayStartMoment"))
-			super.state(MomentHelper.isAfter(object.getDisplayStartMoment(), object.getMoment()), "displayStartMoment", "administrator.banner.form.error.startDate");
+		String dateString = "2201/01/01 00:00";
+		Date futureMostDate = MomentHelper.parse(dateString, "yyyy/MM/dd HH:mm");
 
-		if (!super.getBuffer().getErrors().hasErrors("displayEndMoment"))
-			super.state(MomentHelper.isAfter(object.getDisplayEndMoment(), object.getMoment()), "displayEndMoment", "administrator.banner.form.error.endDate");
+		if (object.getDisplayStartMoment() != null) {
 
-		if (!super.getBuffer().getErrors().hasErrors("displayEndMoment"))
-			super.state(MomentHelper.isLongEnough(object.getDisplayStartMoment(), object.getDisplayEndMoment(), 1, ChronoUnit.WEEKS), "displayEndMoment", "administrator.banner.form.error.period");
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+			if (!super.getBuffer().getErrors().hasErrors("displayStartMoment"))
+				super.state(MomentHelper.isAfter(object.getDisplayStartMoment(), object.getMoment()), "displayStartMoment", "administrator.banner.form.error.startDate");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayStartMoment"))
+				super.state(MomentHelper.isBefore(object.getDisplayStartMoment(), futureMostDate), "displayStartMoment", "administrator.banner.form.error.dateOutOfBounds");
+
+			if (object.getDisplayStartMoment() != null) {
+
+				if (!super.getBuffer().getErrors().hasErrors("displayEndMoment"))
+					super.state(MomentHelper.isLongEnough(object.getDisplayStartMoment(), object.getDisplayEndMoment(), 1, ChronoUnit.WEEKS), "displayEndMoment", "administrator.banner.form.error.period");
+
+				if (!super.getBuffer().getErrors().hasErrors("displayEndMoment"))
+					super.state(MomentHelper.isAfter(object.getDisplayEndMoment(), object.getDisplayStartMoment()), "displayEndMoment", "administrator.banner.form.error.startDateAfterEndDate");
+			}
+		}
+
+		if (object.getDisplayStartMoment() != null) {
+
+			if (!super.getBuffer().getErrors().hasErrors("displayEndMoment"))
+				super.state(MomentHelper.isAfter(object.getDisplayEndMoment(), object.getMoment()), "displayEndMoment", "administrator.banner.form.error.endDate");
+
+			if (!super.getBuffer().getErrors().hasErrors("displayEndMoment"))
+				super.state(MomentHelper.isBefore(object.getDisplayEndMoment(), futureMostDate), "displayEndMoment", "administrator.banner.form.error.dateOutOfBounds");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("slogan")) {
+			Configuration config = this.repository.findConfiguration();
+			String spamTerms = config.getSpamTerms();
+			Double spamThreshold = config.getSpamThreshold();
+			SpamDetector spamHelper = new SpamDetector(spamTerms, spamThreshold);
+			super.state(!spamHelper.isSpam(object.getSlogan()), "slogan", "administrator.banner.form.error.spam");
+		}
+
 	}
 
 	@Override
@@ -105,7 +123,6 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 		Dataset dataset;
 
 		dataset = super.unbind(object, "moment", "displayStartMoment", "displayEndMoment", "picture", "slogan", "target");
-		dataset.put("confirmation", false);
 		dataset.put("readonly", false);
 
 		super.getResponse().addData(dataset);

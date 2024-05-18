@@ -28,7 +28,6 @@
 			<acme:submit code="administrator.banner.form.button.delete" action="/administrator/banner/delete"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:input-checkbox code="administrator.banner.form.label.confirmation" path="confirmation"/>
 			<acme:submit code="administrator.banner.form.button.create" action="/administrator/banner/create"/>
 		</jstl:when>	
 	

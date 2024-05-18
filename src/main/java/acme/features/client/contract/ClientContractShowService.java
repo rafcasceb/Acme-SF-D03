@@ -57,8 +57,8 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		SelectChoices projects;
 		Dataset dataset;
 
-		Collection<Project> unpublishedProjects = this.repository.findAllUnpublishedProjects();
-		projects = SelectChoices.from(unpublishedProjects, "title", object.getProject());
+		Collection<Project> allProjects = this.repository.findAllProjects();
+		projects = SelectChoices.from(allProjects, "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget", "published");
 		dataset.put("project", projects.getSelected().getKey());

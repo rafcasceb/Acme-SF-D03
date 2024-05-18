@@ -8,17 +8,27 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-any.trainingModule.form.title = Formulario del Módulo de Entrenamiento
-any.trainingModule.list.title = Lista de Módulos de Entrenamiento
+any.training-module.form.title = Formulario de Módulo de Entrenamiento
+any.training-module.list.title = Listado de Módulos de Entrenamiento
 
-any.trainingModule.form.label.code = Código:
-any.trainingModule.form.label.details = Detalles:
-any.trainingModule.form.label.level = Nivel de Dificultad:
-any.trainingModule.form.label.creationMoment = Momento de Creación:
-any.trainingModule.form.label.updateMoment = Momento de Actualización (Opcional):
-any.trainingModule.form.label.link = Enlace (Opcional):
-any.trainingModule.form.label.estimatedTotalTime = Tiempo Total Estimado:
-any.trainingModule.form.label.published = Publicado:
-any.training-module.form.label.project = Projecto:
+any.training-module.form.label.code = Código:
+any.training-module.form.label.details = Detalles:
+any.training-module.form.label.difficultyLevel = Nivel de Dificultad:
+any.training-module.form.label.creationMoment = Momento de Creación:
+any.training-module.form.label.updateMoment = Momento de Actualización: (Opcional):
+any.training-module.form.label.link = Enlace: (Opcional):
+any.training-module.form.label.estimatedTotalTime = Tiempo Total Estimado:
+any.training-module.form.label.published = Publicado:
+any.training-module.form.label.project = Proyecto:
+
+any.training-module.list.label.code = Código
+any.training-module.list.label.creation-moment = Momento de Creación
+any.training-module.list.label.details = Detalles
+any.training-module.list.label.difficulty-level = Nivel de Dificultad
+any.training-module.list.label.update-moment = Momento de Actualización
+any.training-module.list.label.link = Enlace
+any.training-module.list.label.estimated-total-time = Tiempo Total Estimado
+any.training-module.list.label.published = Publicado
+any.training-module.list.button.create = Crear
 
 

@@ -25,9 +25,7 @@
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && published == false}">
-			<jstl:if test="${_command== 'show'}">
-				<acme:button code="manager.project.form.button.user-stories" action="/manager/user-story/list-for-project?projectId=${id}"/>
-			</jstl:if>
+			<acme:button code="manager.project.form.button.user-stories" action="/manager/user-story/list-for-project?projectId=${id}"/>
 			<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>
 			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
 			<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>

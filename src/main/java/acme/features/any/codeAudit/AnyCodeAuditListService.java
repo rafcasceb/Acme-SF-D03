@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.EnumMode;
 import acme.entities.audits.CodeAudit;
 import acme.entities.audits.Mark;
-import acme.features.auditor.codeAudit.EnumMode;
 
 @Service
 public class AnyCodeAuditListService extends AbstractService<Any, CodeAudit> {

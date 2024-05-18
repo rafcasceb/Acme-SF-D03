@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.configuration.Configuration;
 import acme.entities.contracts.Contract;
 import acme.entities.contracts.ProgressLog;
 import acme.entities.projects.Project;
@@ -34,12 +35,21 @@ public interface ClientContractRepository extends AbstractRepository {
 	Project findOneProjectById(int id);
 
 	@Query("select p from Project p")
-	Collection<Project> findManyProjects();
+	Collection<Project> findAllProjects();
 
 	@Query("select p from Project p where p.published = false")
 	Collection<Project> findAllUnpublishedProjects();
 
 	@Query("select p from ProgressLog p where p.contract.id = :contractId ")
 	Collection<ProgressLog> findManyProgressLogsByContractId(int contractId);
+
+	@Query("select c.acceptedCurrencies from Configuration c")
+	String findAcceptedCurrencies();
+
+	@Query("select sum(c.budget.amount) from Contract c where c.project.id = :projectId and c.id != :id")
+	Double findAmountContractsFromSameProjectExceptThis(int projectId, int id);
+
+	@Query("select c from Configuration c")
+	Configuration findConfiguration();
 
 }

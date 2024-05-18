@@ -1,0 +1,48 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.sponsorship.form.title = Patrocinio
+sponsor.sponsorship.list.title = Patrocinios
+sponsor.sponsorship.list.button.create = Crear
+sponsor.sponsorship.form.button.create = Crear
+sponsor.sponsorship.form.button.update = Actualizar
+sponsor.sponsorship.form.button.delete = Eliminar
+sponsor.sponsorship.form.button.publish = Publicar
+sponsor.sponsorship.form.button.invoices = Ver facturas
+
+
+sponsor.sponsorship.form.label.code = Código
+sponsor.sponsorship.form.label.project = Proyecto
+sponsor.sponsorship.form.label.moment = Fecha de Creación
+sponsor.sponsorship.form.label.startDate = Fecha de Inicialización
+sponsor.sponsorship.form.label.endDate = Fecha de Finalización
+sponsor.sponsorship.form.label.type = Tipo
+sponsor.sponsorship.form.label.amount = Cantidad
+sponsor.sponsorship.form.label.link = Link
+sponsor.sponsorship.form.label.email = Email
+sponsor.sponsorship.form.label.published = Publicado
+
+sponsor.sponsorship.list.label.code = Codigo
+sponsor.sponsorship.list.label.project = Proyecto
+sponsor.sponsorship.list.label.type = Tipo
+sponsor.sponsorship.list.label.amount = Cantidad
+
+sponsor.sponsorhsip.form.error.duplicate = Este código ya existe
+sponsor.sponsorhsip.form.error.period = El periódo de duración debe superar un mes
+sponsor.sponsorhsip.form.error.startDate = La fecha de inicio debe estar en el futuro
+sponsor.sponsorhsip.form.error.endDate = La fecha de fin debe ser posterior a la de inicio
+sponsor.sponsorship.form.error.invoices = Todos los recibos deben estar publicados y sumar la cantidad a pagar
+sponsor.sponsorship.form.error.published = Imposible modificar un patrocinio ya publicado
+sponsor.sponsorship.form.error.currencyChange = Imposible modificar la moneda de pago con facturas ya publicadas
+sponsor.sponsorship.form.error.amountOutOfBounds = La cantidad debe encontrarse entre 0.00 y 1000000.00
+sponsor.sponsorship.form.error.deleteWithPublishedInvoices = Imposible borrar un patrocinio con facturas ya publicadas
+sponsor.sponsorship.form.error.dateOutOfBounds = Todas las fechas deben ser anteriores a 2201/01/01 00:00
+sponsor.sponsorship.form.error.currencyNotSupported = La divisa elegida no cuenta con soporte en este sistema.
+sponsor.sponsorship.form.error.startDateBeforeEndDate = La fecha de inicio debe ser anterior a la de fin
