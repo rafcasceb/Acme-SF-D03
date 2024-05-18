@@ -16,10 +16,10 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-integer code="manager.dashboard.form.label.totalNumberUserStoriesPriorityMust" path="totalNumberUserStoriesPriorityMust" readonly="true"/>
-	<acme:input-integer code="manager.dashboard.form.label.totalNumberUserStoriesPriorityShould" path="totalNumberUserStoriesPriorityShould" readonly="true"/>
-	<acme:input-integer code="manager.dashboard.form.label.totalNumberUserStoriesPriorityCould" path="totalNumberUserStoriesPriorityCould" readonly="true"/>
-	<acme:input-integer code="manager.dashboard.form.label.totalNumberUserStoriesPriorityWont" path="totalNumberUserStoriesPriorityWont" readonly="true"/>
+	<acme:input-integer code="manager.dashboard.form.label.totalNumberUserStoriesPriorityMust" path="totalNumberUserStoriesPriorityMust" readonly="true" placeholder="--"/>
+	<acme:input-integer code="manager.dashboard.form.label.totalNumberUserStoriesPriorityShould" path="totalNumberUserStoriesPriorityShould" readonly="true" placeholder="--"/>
+	<acme:input-integer code="manager.dashboard.form.label.totalNumberUserStoriesPriorityCould" path="totalNumberUserStoriesPriorityCould" readonly="true" placeholder="--"/>
+	<acme:input-integer code="manager.dashboard.form.label.totalNumberUserStoriesPriorityWont" path="totalNumberUserStoriesPriorityWont" readonly="true" placeholder="--"/>
 	
 	<acme:input-double code="manager.dashboard.form.label.averageEstimatedCostUserStories" path="averageEstimatedCostUserStories" readonly="true" placeholder="--"/>
 	<acme:input-double code="manager.dashboard.form.label.deviationEstimatedCostUserStories" path="deviationEstimatedCostUserStories" readonly="true" placeholder="--"/>
